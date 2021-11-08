@@ -1,0 +1,25 @@
+plugins {
+    id "org.jetbrains.intellij" version "0.6.5"
+    id "org.jetbrains.kotlin.jvm" version "1.6.0-RC"
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'com.github.lzk90s.idea.plugin'
+version '1.0.0'
+
+dependencies {
+    compile "info.picocli:picocli:4.6.1"
+    compile "com.github.jsqlparser:jsqlparser:3.2"
+}
+
+intellij {
+    plugins 'java'
+    localPath '/Applications/IntelliJ IDEA CE.app'
+}
+
+patchPluginXml {
+    sinceBuild "203"
+}

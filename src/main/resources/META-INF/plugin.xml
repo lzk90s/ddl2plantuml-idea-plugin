@@ -1,0 +1,32 @@
+<idea-plugin>
+    <id>com.github.lzk90s.idea.plugin.ddl2uml</id>
+    <name>DDL to Plantuml</name>
+    <vendor email="374564811@qq.com" url="https://github.com/organics2016">organics2016</vendor>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <description><![CDATA[
+       <b>A simple plugin for converting sql ddl to plantuml</b><br>
+    ]]></description>
+
+    <change-notes><![CDATA[
+         <b>1.0.11 version</b>
+         <li>Support Jackson and Fastjson annotations.</li>
+    ]]>
+    </change-notes>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="ddl2plantuml.NotificationGroup" displayType="BALLOON"
+                           key="ddl2plantuml.NotificationGroup"/>
+    </extensions>
+
+    <actions>
+        <action class="com.github.lzk90s.idea.plugin.Ddl2PlantUMLAction"
+                id="com.github.lzk90s.idea.plugin.Ddl2PlantUMLAction"
+                text="DDL 2 PlantUML"
+                description="Convert ddl to plantuml and copy to the shear plate">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
