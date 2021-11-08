@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFile
-import com.intellij.psi.util.PsiUtilBase
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
 import java.nio.file.Path
@@ -31,16 +30,15 @@ class Ddl2PlantUMLAction : AnAction() {
     }
 
     override fun actionPerformed(e: AnActionEvent) {
-        val editor = e.getData(CommonDataKeys.EDITOR)
-        val project = e.project
-        val psiFile = PsiUtilBase.getPsiFileInEditor(editor!!, project!!)
+        val project = e.project!!
+        val psiFile = e.getData(CommonDataKeys.PSI_FILE)!!
 
-        if (!isSqlFile(psiFile!!)) {
+        if (!isSqlFile(psiFile)) {
             notifyMessage(project, "File must be sql ddl file!!", NotificationType.ERROR)
             return
         }
 
-        val selection = StringSelection(buildPlantuml(psiFile!!))
+        val selection = StringSelection(buildPlantuml(psiFile))
         val clipboard = Toolkit.getDefaultToolkit().systemClipboard
         clipboard.setContents(selection, selection)
 
